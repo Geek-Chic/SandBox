@@ -1,0 +1,14 @@
+registry:
+    image: registry:latest
+    environment:
+        - DOCKER_REGISTRY_CONFIG=/docker-image/registry-config/config.yml
+    volumes:
+        - /opt/docker-image:/docker-image 
+    ports:
+        - "5000:5000"
+registryauth:
+    image: evil/docker-nginx-auth-registry
+    ports:
+        - "443:443"
+    links:
+        - registry:registry
