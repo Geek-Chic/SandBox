@@ -19,7 +19,7 @@ echo "[INFO] Make sure that 'Common Name'(i.e.,server FQDN or YOUR name) matches
 #为nginx web生成ssl密钥
 sudo openssl genrsa -out server-key.pem 2048
 #为nginx生成证书签署请求
-sudo openssl req -subj "/CN=119.57.58.71" -new -key server-key.pem -out server.csr
+sudo openssl req -subj "/CN=registry.com" -new -key server-key.pem -out server.csr
 #用CA给公钥签名
 sudo openssl x509 -req -days 365 -in server.csr -CA ca.pem -CAkey ca-key.pem -CAcreateserial -out server-cert.pem
 #生成客户端密钥
@@ -36,5 +36,5 @@ sudo chmod -v 0444 ca.pem server-cert.pem cert.pem
 sudo rm -v client.csr server.csr
 #生成访问密码
 htpasswd -b -c -d docker-registry.htpasswd evil admin
-sudo mkdir -p /etc/docker/certs.d/119.57.58.71
-sudo cp ca.pem /etc/docker/certs.d/119.57.58.71/
+sudo mkdir -p /etc/docker/certs.d/registry.com
+sudo cp ca.pem /etc/docker/certs.d/registry.com
