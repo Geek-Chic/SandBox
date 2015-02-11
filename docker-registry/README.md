@@ -1,9 +1,10 @@
 ##安装Docker Registry
-1.如果是内网，则可以不需要安装验证
+1. 如果是内网，则可以不需要安装验证
 service docker stop  
 nohup docker -H unix:///var/run/docker.sock --insecure-registry 127.0.0.1:5000 -d &
-2.使用安装验证使用私有库，使用nginx做代理 ，增加SSL/TLS验证
+2. 使用安装验证使用私有库，使用nginx做代理 ，增加SSL/TLS验证
 这里需要创建两个Docker Container,一个是docker-registry,别一个是docker-nginx-auth-registry 做安全验证
+
 ###Requirement
 ####证书
 1.如果自己已经申请了证书，则可以跳过ssl-certgen.sh脚本中的自建证书，直接开始创建服务器密钥和签名
