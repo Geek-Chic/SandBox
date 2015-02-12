@@ -1,5 +1,7 @@
 registry:
     image: registry:latest
+    environment:
+        - DOCKER_REGISTRY_CONFIG=/docker-image/registry-config/config.yml
     volumes:
         - /opt/docker-image:/docker-image 
     ports:
