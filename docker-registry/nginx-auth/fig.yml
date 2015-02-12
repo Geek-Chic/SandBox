@@ -2,8 +2,6 @@ registry:
     image: registry:latest
     volumes:
         - /opt/docker-image:/docker-image 
-    ports:
-        - "5000:5000"
 registryauth:
     image: evil/docker-nginx-auth-registry
     ports:
